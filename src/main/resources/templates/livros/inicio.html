@@ -1,18 +1,113 @@
 <!doctype html>
-<html lang="pt-br" xmlns:th="...">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Biblioteca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Online</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        th {
+            background-color: #34495e;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: #f1f3f5;
+            transition: background-color 0.2s ease;
+        }
+
+        td {
+            font-size: 16px;
+            color: #495057;
+        }
+    </style>
 </head>
 <body>
-    <h1 th:text="${titulo}">Sistema de Biblioteca</h1>
-    <nav>
-        <a th:href="@{/livros}">
-            Livros
-        </a>
-    </nav>
+
+<nav class="navbar">
+    <a th:href="@{/livros}">Sistema de Biblioteca</a>
+</nav>
+
+<div class="container">
+    <h1>Livros Disponíveis</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Categoria</th>
+            <th>Título do Livro</th>
+            <th>Autor</th>
+            <th>ISBN</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${livro}">
+            <td th:text="${item.categoria.nome}">Categoria Exemplo</td>
+            <td th:text="${item.titulo}">Título Exemplo</td>
+            <td th:text="${item.autor.nome}">Autor Exemplo</td>
+            <td th:text="${item.isbn}">123-456-789</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

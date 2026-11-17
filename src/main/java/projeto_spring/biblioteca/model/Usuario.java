@@ -6,13 +6,12 @@ import java.util.List;
 public class Usuario {
     private String nome;
     private String identificacao;
-
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String identificacao, List<Emprestimo> emprestimo) {
+    public Usuario(String nome, String identificacao) {
         this.nome = nome;
         this.identificacao = identificacao;
     }
@@ -33,11 +32,15 @@ public class Usuario {
         this.identificacao = identificacao;
     }
 
-    public List<Emprestimo> getEmprestimo() {
+    public List<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 
     public void adicionarEmprestimo(Emprestimo novoEmprestimo) {
         this.emprestimos.add(novoEmprestimo);
+    }
+
+    public void removerEmprestimo(Emprestimo emprestimo) {
+        this.emprestimos.remove(emprestimo);
     }
 }

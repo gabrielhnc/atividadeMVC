@@ -37,4 +37,9 @@ public class Autor {
     public void setObrasPublicadas(int obrasPublicadas) {
         this.obrasPublicadas = obrasPublicadas;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
