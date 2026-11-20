@@ -1,9 +1,12 @@
 package projeto_spring.biblioteca.model;
 
 import java.time.LocalDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Emprestimo {
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dataEmprestimo;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime prazoEntrega;
     private Livro livro;
     private Usuario usuario;
